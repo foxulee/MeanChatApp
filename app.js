@@ -15,6 +15,12 @@ const cors = require('cors');
 // [SH] Require Passport
 const passport = require('passport');
 
+
+// Create link to Angular build directory
+var distDir = __dirname + "/client/dist/";
+app.use(express.static(distDir));
+
+
 // To compress the request
 const compression = require('compression');
 
