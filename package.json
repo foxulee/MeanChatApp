@@ -7,7 +7,8 @@
     "npm": "6.0.0"
   },
   "scripts": {
-    "start": "concurrently  \"nodemon ./bin/www\""
+    "start": "concurrently  \"nodemon ./bin/www\"",
+    "deploy": "git push origin master && git push heroku master"
   },
   "dependencies": {
     "async": "^2.6.0",
