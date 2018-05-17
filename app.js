@@ -16,9 +16,7 @@ const cors = require('cors');
 const passport = require('passport');
 
 
-// Create link to Angular build directory
-var distDir = __dirname + "/client/dist/";
-app.use(express.static(distDir));
+
 
 
 // To compress the request
@@ -58,6 +56,10 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(cors());
+
+// Create link to Angular build directory
+var distDir = __dirname + "/client/dist/";
+app.use(express.static(distDir));
 
 // [SH] Initialise Passport before using the route middleware
 app.use(passport.initialize());
