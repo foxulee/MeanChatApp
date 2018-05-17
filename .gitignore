@@ -2,6 +2,7 @@
 
 /node_modules
 /secret
+/client
 
 # Logs
 logs

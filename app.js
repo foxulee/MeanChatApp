@@ -59,7 +59,11 @@ app.use(cors());
 
 // Create link to Angular build directory
 var distDir = __dirname + "/client/dist/";
+console.log('distDir', distDir);
 app.use(express.static(distDir));
+app.route('/*', (req, res) => {
+    res.redirect(distDir + 'index.html');
+})
 
 // [SH] Initialise Passport before using the route middleware
 app.use(passport.initialize());

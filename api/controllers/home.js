@@ -23,7 +23,10 @@ module.exports.getClubs = function (req, res) {
             })
         }
     ], (err, results) => {
-        if (err) console.log(err);
+        if (err) {
+            console.log(err);
+            res.status(500).json();
+        }
 
         const allClubs = results[0];
         const sortedCountriesResult = _.sortBy(results[1], '_id');
@@ -67,7 +70,7 @@ module.exports.addFavoriteClub = function (req, res) {
                 }
             }, (err, count) => {
                 console.log('count', count);
-                
+
                 callback(err, count)
             });
         }
