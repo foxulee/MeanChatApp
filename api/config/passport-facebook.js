@@ -2,7 +2,7 @@ const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
-const secret = require('../../secret/secretFile');
+// const secret = require('../../secret/secretFile');
 
 passport.serializeUser((user, done) => {
     done(null, user);
@@ -12,10 +12,10 @@ passport.deserializeUser((user, done) => {
 });
 
 passport.use(new FacebookStrategy({
-        clientID: secret.facebook.clientID,
-        clientSecret: secret.facebook.clientSecret,
-        // clientID: process.env.FB_CLIENT_ID,
-        // clientSecret: process.env.FB_CLIENT_SECRET,
+        // clientID: secret.facebook.clientID,
+        // clientSecret: secret.facebook.clientSecret,
+        clientID: process.env.FB_CLIENT_ID,
+        clientSecret: process.env.FB_CLIENT_SECRET,
         profileFields: ['email', 'displayName', 'photos'],
         callbackURL: 'https://localhost:4200/api/facebook/callback',
         passReqToCallback: true
