@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "concurrently  \"nodemon ./bin/www\"",
-    "deploy": "git push origin master && git push heroku master"
+    "deploy": "git push && git push heroku master"
   },
   "dependencies": {
     "async": "^2.6.0",
