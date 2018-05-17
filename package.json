@@ -9,7 +9,9 @@
   "scripts": {
     "start": "concurrently  \"nodemon ./bin/www\"",
     "deploy": "git push && git push heroku master",
-    "start2": "nodemon ./bin/www"
+    "start:prod": {
+      "command": "node ./bin/www"
+    }
   },
   "dependencies": {
     "async": "^2.6.0",
