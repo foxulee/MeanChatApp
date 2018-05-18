@@ -8,7 +8,7 @@ const fs = require('fs');
 const app = require('../app');
 const debug = require('debug')('MEAN-stack-authentication:server');
 const http = require('http');
-const https = require('https');
+// const https = require('https');
 const socketIO = require('socket.io');
 const {
   Users
@@ -25,21 +25,21 @@ const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
- * Create HTTP server.
+ * Create HTTP server. For deployment
  */
 
-// const server = http.createServer(app);
+const server = http.createServer(app);
 
 
 /**
- * Create HTTPS server.
+ * Create HTTPS server. For development
  */
-const server = https.createServer({
-  key: fs.readFileSync(path.join(__dirname, '../client/ssl') + '/server.key'),
-  cert: fs.readFileSync(path.join(__dirname, '../client/ssl') + '/server.crt'),
-  requestCert: false,
-  rejectUnauthorized: false
-}, app);
+// const server = https.createServer({
+//   key: fs.readFileSync(path.join(__dirname, '../client/ssl') + '/server.key'),
+//   cert: fs.readFileSync(path.join(__dirname, '../client/ssl') + '/server.crt'),
+//   requestCert: false,
+//   rejectUnauthorized: false
+// }, app);
 
 
 /**
