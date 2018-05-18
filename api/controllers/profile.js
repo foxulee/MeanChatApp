@@ -135,6 +135,8 @@ module.exports.saveProfile = function (req, res) {
 
 
 module.exports.getAllMembers = function (req, res) {
+  console.log('enter getAllMembers');
+  
   User.find({}, {
     '_id': 1,
     'name': 1,
