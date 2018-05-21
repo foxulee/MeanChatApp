@@ -53,7 +53,10 @@ router.post('/home/club', ctrlHome.addFavoriteClub);
 router.get('/group/getAllGroupMessages/:group', ctrlGroup.getAllGroupMessages);
 router.post('/group/saveGroupMessage/', ctrlGroup.saveGroupMessage);
 router.post('/group/friendRequest/:name', ctrlGroup.friendRequest);
-router.post('/group/request/accept', ctrlGroup.acceptRequest) router.post('/group/request/cancel', ctrlGroup.cancelRequest) router.get('/group/getUser/:id', ctrlGroup.getUser) router.get('/group/getFriendList/:id', ctrlGroup.getFriendList)
+router.post('/group/request/accept', ctrlGroup.acceptRequest);
+router.post('/group/request/cancel', ctrlGroup.cancelRequest);
+router.get('/group/getUser/:id', ctrlGroup.getUser);
+router.get('/group/getFriendList/:id', ctrlGroup.getFriendList);
 
 // private chat
 router.post('/private-chat', ctrlPrivateChat.saveChatMessage);
