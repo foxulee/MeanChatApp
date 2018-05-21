@@ -90,7 +90,8 @@ module.exports.facebookLogin = function (req, res) {
 module.exports.facebookLoginCallback = function (req, res, next) {
   passport.authenticate('facebook', {
       // successRedirect: '/',
-      failureRedirect: '/register',
+      // failureRedirect: '/register',
+      failureRedirect: '/#/register',
       failureFlash: true
     },
 
@@ -100,12 +101,14 @@ module.exports.facebookLoginCallback = function (req, res, next) {
       // If a user is found
       if (user) {
         token = user.generateJwt();
-        res.redirect('/' + '?token=' + token);
+        // res.redirect('/' + '?token=' + token);
+        res.redirect('/#/' + '?token=' + token);
       } else {
         // If user is not found
         console.log('user not found');
         
-        res.redirect('/login');
+        // res.redirect('/login');
+        res.redirect('/#/login');
       }
     }
 
@@ -121,7 +124,8 @@ module.exports.googleLogin = function (req, res, next) {
 module.exports.googleLoginCallback = function (req, res, next) {
   passport.authenticate('google', {
     // successRedirect: '/',
-    failureRedirect: '/register',
+    // failureRedirect: '/register',
+    failureRedirect: '/#/register',
     failureFlash: true
   }, function (err, user, info) {
     let token;
@@ -129,11 +133,13 @@ module.exports.googleLoginCallback = function (req, res, next) {
     // If a user is found
     if (user) {
       token = user.generateJwt();
-      res.redirect('/' + '?token=' + token);
+      // res.redirect('/' + '?token=' + token);
+      res.redirect('/#/' + '?token=' + token);
     } else {
       // If user is not found
       console.log('user not found');
-      res.redirect('/login');
+      // res.redirect('/login');
+      res.redirect('/#/login');
     }
   })(req, res, next);
 }
