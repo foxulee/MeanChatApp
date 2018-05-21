@@ -36,11 +36,13 @@ router.get('/google', ctrlAuth.googleLogin);
 router.get('/google/callback', ctrlAuth.googleLoginCallback)
 
 // admin
-router.post('/uploadClubImage', function(req, res){(aws.UploadClubImage.any())(req, res, function (err) {
-  if (err) console.log('aws err', err)
-})}, (req, res) => {
-  res.status(200).end()
-});
+router.post('/uploadClubImage', aws.UploadClubImage.any(), (req, res) => res.status(200).end());
+// error handling for aws uploading
+// router.post('/uploadClubImage', function(req, res){(aws.UploadClubImage.any())(req, res, function (err) {
+//   if (err) console.log('aws err', err)
+// })}, (req, res) => {
+//   res.status(200).end()
+// });
 router.post('/addClub', ctrlAdmin.addClub);
 
 // home
@@ -51,10 +53,7 @@ router.post('/home/club', ctrlHome.addFavoriteClub);
 router.get('/group/getAllGroupMessages/:group', ctrlGroup.getAllGroupMessages);
 router.post('/group/saveGroupMessage/', ctrlGroup.saveGroupMessage);
 router.post('/group/friendRequest/:name', ctrlGroup.friendRequest);
-router.post('/group/request/accept', ctrlGroup.acceptRequest)
-router.post('/group/request/cancel', ctrlGroup.cancelRequest)
-router.get('/group/getUser/:id', ctrlGroup.getUser)
-router.get('/group/getFriendList/:id', ctrlGroup.getFriendList)
+router.post('/group/request/accept', ctrlGroup.acceptRequest) router.post('/group/request/cancel', ctrlGroup.cancelRequest) router.get('/group/getUser/:id', ctrlGroup.getUser) router.get('/group/getFriendList/:id', ctrlGroup.getFriendList)
 
 // private chat
 router.post('/private-chat', ctrlPrivateChat.saveChatMessage);

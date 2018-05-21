@@ -3,6 +3,7 @@
 /node_modules
 /secret
 /client
+/public
 
 # Logs
 logs
