@@ -14,14 +14,17 @@ const ctrlAdmin = require('../controllers/admin');
 const ctrlHome = require('../controllers/home');
 const ctrlGroup = require('../controllers/group');
 const ctrlPrivateChat = require('../controllers/private-chat');
- 
+
 // profile and member
 router.get('/profile', auth, ctrlProfile.profileRead);
 router.post('/saveProfile', ctrlProfile.saveProfile);
 router.post('/addInterest', ctrlProfile.addInterest);
 router.get('/members', ctrlProfile.getAllMembers);
 router.get('/member-overview/:id', ctrlProfile.getMemberOverview);
-router.post('/uploadUserImage', aws.UploadUserImage.any(), (req, res) => {res.status(200).end()});
+router.post('/uploadUserImage', aws.UploadUserImage.any(), (err, req, res) => {
+  if (err) console.log('aws err', err)
+  res.status(200).end()
+});
 
 // authentication
 router.post('/register', ctrlAuth.register);
@@ -36,7 +39,9 @@ router.get('/google', ctrlAuth.googleLogin);
 router.get('/google/callback', ctrlAuth.googleLoginCallback)
 
 // admin
-router.post('/uploadClubImage', aws.UploadClubImage.any(), (req, res) => {res.status(200).end()});
+router.post('/uploadClubImage', aws.UploadClubImage.any(), (req, res) => {
+  res.status(200).end()
+});
 router.post('/addClub', ctrlAdmin.addClub);
 
 // home
