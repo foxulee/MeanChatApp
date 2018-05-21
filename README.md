@@ -1,3 +1,3 @@
 # MEAN Stack Chat App
 
-Server side deployed on Heroku!
+MEAN STACK CHAT APPLICATION --- Server side implemented with Node.js Express & Socket.io deployed on Heroku!
