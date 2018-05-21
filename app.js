@@ -55,7 +55,13 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
-app.use(cors());
+
+// setup cors
+let corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 
 // Create link to Angular build directory
 // var distDir = __dirname + "/client/dist/";
