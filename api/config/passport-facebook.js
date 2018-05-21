@@ -17,7 +17,8 @@ passport.use(new FacebookStrategy({
         clientID: process.env.FB_CLIENT_ID,
         clientSecret: process.env.FB_CLIENT_SECRET,
         profileFields: ['email', 'displayName', 'photos'],
-        callbackURL: 'https://localhost:4200/api/facebook/callback',
+        // callbackURL: 'https://localhost:4200/api/facebook/callback',
+        callbackURL: 'https://mean-stack-chat-app.herokuapp.com/api/facebook/callback',
         passReqToCallback: true
     },
     function (req, token, refreshToken, profile, done) {

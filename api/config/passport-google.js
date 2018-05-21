@@ -16,7 +16,8 @@ passport.use(new GoogleStrategy({
         // clientSecret: secret.google.clientSecret,
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: 'https://localhost:4200/api/google/callback',
+        // callbackURL: 'https://localhost:4200/api/google/callback',
+        callbackURL: 'https://mean-stack-chat-app.herokuapp.com/api/google/callback',
         passReqToCallback: true
     },
     function (req, accessToken, refreshToken, profile, done) {
