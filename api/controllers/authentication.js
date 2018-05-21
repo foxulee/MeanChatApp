@@ -91,7 +91,7 @@ module.exports.facebookLoginCallback = function (req, res, next) {
   passport.authenticate('facebook', {
       // successRedirect: '/',
       // failureRedirect: '/register',
-      failureRedirect: '/#/register',
+      failureRedirect: 'https://mean-chat-app-foxulee.herokuapp.com/#/register',
       failureFlash: true
     },
 
@@ -102,13 +102,13 @@ module.exports.facebookLoginCallback = function (req, res, next) {
       if (user) {
         token = user.generateJwt();
         // res.redirect('/' + '?token=' + token);
-        res.redirect('/#/' + '?token=' + token);
+        res.redirect('https://mean-chat-app-foxulee.herokuapp.com/#/' + '?token=' + token);
       } else {
         // If user is not found
         console.log('user not found');
         
         // res.redirect('/login');
-        res.redirect('/#/login');
+        res.redirect('https://mean-chat-app-foxulee.herokuapp.com/#/login');
       }
     }
 
@@ -125,7 +125,7 @@ module.exports.googleLoginCallback = function (req, res, next) {
   passport.authenticate('google', {
     // successRedirect: '/',
     // failureRedirect: '/register',
-    failureRedirect: '/#/register',
+    failureRedirect: 'https://mean-chat-app-foxulee.herokuapp.com/#/register',
     failureFlash: true
   }, function (err, user, info) {
     let token;
@@ -134,12 +134,12 @@ module.exports.googleLoginCallback = function (req, res, next) {
     if (user) {
       token = user.generateJwt();
       // res.redirect('/' + '?token=' + token);
-      res.redirect('/#/' + '?token=' + token);
+      res.redirect('https://mean-chat-app-foxulee.herokuapp.com/#/' + '?token=' + token);
     } else {
       // If user is not found
       console.log('user not found');
       // res.redirect('/login');
-      res.redirect('/#/login');
+      res.redirect('https://mean-chat-app-foxulee.herokuapp.com/#/login');
     }
   })(req, res, next);
 }
