@@ -23,7 +23,7 @@ router.get('/members', ctrlProfile.getAllMembers);
 router.get('/member-overview/:id', ctrlProfile.getMemberOverview);
 router.post('/uploadUserImage', function(req, res){(aws.UploadUserImage.any())(req, res, function (err) {
   if (err) console.log('aws err', err)
-})}, (err, req, res) => res.status(200).end());
+})}, (req, res) => res.status(200).end());
 
 // authentication
 router.post('/register', ctrlAuth.register);
@@ -38,7 +38,9 @@ router.get('/google', ctrlAuth.googleLogin);
 router.get('/google/callback', ctrlAuth.googleLoginCallback)
 
 // admin
-router.post('/uploadClubImage', aws.UploadClubImage.any(), (req, res) => {
+router.post('/uploadClubImage', function(req, res){(aws.UploadClubImage.any())(req, res, function (err) {
+  if (err) console.log('aws err', err)
+})}, (req, res) => {
   res.status(200).end()
 });
 router.post('/addClub', ctrlAdmin.addClub);
