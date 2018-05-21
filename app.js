@@ -57,10 +57,18 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 
 // setup cors
-let corsOptions = {
-    origin: '*',
-    optionsSuccessStatus: 200
-};
+let originsWhitelist = [
+    'https://localhost:4200',
+    //this is my front-end url for development
+    'https://mean-chat-app-foxulee.herokuapp.com'
+];
+var corsOptions = {
+    origin: function (origin, callback) {
+        let isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
+        callback(null, isWhitelisted);
+    },
+    credentials: true
+}
 app.use(cors(corsOptions));
 
 // Create link to Angular build directory
