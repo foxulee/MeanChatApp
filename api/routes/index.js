@@ -21,9 +21,9 @@ router.post('/saveProfile', ctrlProfile.saveProfile);
 router.post('/addInterest', ctrlProfile.addInterest);
 router.get('/members', ctrlProfile.getAllMembers);
 router.get('/member-overview/:id', ctrlProfile.getMemberOverview);
-router.post('/uploadUserImage', (aws.UploadUserImage.any())(req, res, function (err) {
+router.post('/uploadUserImage', function(req, res){(aws.UploadUserImage.any())(req, res, function (err) {
   if (err) console.log('aws err', err)
-}), (err, req, res) => res.status(200).end());
+})}, (err, req, res) => res.status(200).end());
 
 // authentication
 router.post('/register', ctrlAuth.register);
